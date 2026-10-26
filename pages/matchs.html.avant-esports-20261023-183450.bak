@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="Suivez les matchs de Suicide Crew sur Honor of Kings.">
+  <title>Matchs — Suicide Crew</title>
+  <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    .match-page { max-width: 900px; margin: auto; padding: 70px 20px; }
+    .match-label { color: #ff4545; letter-spacing: 3px; font-weight: 700; }
+    .match-card { margin-top: 25px; padding: 28px; border: 1px solid #632020; border-radius: 16px; background: linear-gradient(145deg,#171010,#080808); text-align: center; }
+    .match-teams { display: flex; justify-content: center; align-items: center; gap: 24px; margin: 30px 0; flex-wrap: wrap; }
+    .match-team { font-size: clamp(20px,5vw,32px); font-weight: 800; }
+    .match-vs { color: #ff4545; font-family: sans-serif; font-weight: 900; font-size: 25px; }
+    .countdown { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 25px 0; }
+    .count-unit { min-width: 75px; padding: 15px 10px; background: #210d0d; border: 1px solid #552020; border-radius: 10px; }
+    .count-number { display: block; color: #ff4545; font-size: 28px; font-weight: 900; }
+    .count-caption { font-size: 11px; letter-spacing: 1px; color: #ccc; }
+    .match-info { color: #ddd; line-height: 1.9; }
+    .match-status { display: inline-block; padding: 7px 14px; border-radius: 30px; background: #351b08; color: #ffca7a; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <a class="brand" href="../index.html" aria-label="Suicide Crew accueil">
+      <span class="brand-mark"><span>SC</span></span>
+      <span class="brand-copy"><strong>SUICIDE</strong><em>CREW</em><small>HONOR OF KINGS</small></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span><b>Menu</b></button>
+    <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="equipe.html">La Team</a>
+      <a href="matchs.html" class="active">Matchs</a>
+      <a href="exploits.html">Exploits</a>
+      <a href="live.html">Live</a>
+      <a href="classement.html">Classement</a>
+      <a href="recrutement.html">Recrutement</a><a href="connexion.html">Connexion</a>
+    </nav>
+  </header>
+
+  <main class="match-page">
+    <p class="match-label">PROCHAINE BATAILLE</p>
+    <h1>LE PROCHAIN MATCH</h1>
+    <p>Chaque manche compte. Chaque décision peut changer l'issue du combat.</p>
+
+    <section class="match-card" aria-labelledby="match-title">
+      <p class="match-status" id="match-status">● MATCH À VENIR</p>
+      <h2 id="match-title">HOK United Africa League</h2>
+      <div class="match-teams">
+        <div class="match-team">SUICIDE<br>CREW</div>
+        <div class="match-vs">VS</div>
+        <div class="match-team">MADDEN<br>EFFECT</div>
+      </div>
+      <p class="match-info">
+        📅 Dimanche 25 octobre 2026<br>
+        🕢 19 h 40 — heure de Côte d'Ivoire<br>
+        🎮 Format BO3 — premier à gagner 2 manches
+      </p>
+      <h3>LE COMBAT COMMENCE DANS</h3>
+      <div class="countdown" id="match-countdown" aria-live="polite">
+        <div class="count-unit"><span class="count-number">--</span><span class="count-caption">JOURS</span></div>
+        <div class="count-unit"><span class="count-number">--</span><span class="count-caption">HEURES</span></div>
+        <div class="count-unit"><span class="count-number">--</span><span class="count-caption">MINUTES</span></div>
+        <div class="count-unit"><span class="count-number">--</span><span class="count-caption">SECONDES</span></div>
+      </div>
+      <p class="match-info">Résultat : en attente du match.</p>
+    </section>
+    <p><a class="btn btn-ghost" href="../index.html">← Retour à l'accueil</a></p>
+  </main>
+
+  <script src="../js/app.js"></script>
+<script src="../js/reveal.js"></script>
+  <script>
+    (() => {
+      const target = new Date("2026-10-25T19:40:00+00:00").getTime();
+      const countdown = document.getElementById("match-countdown");
+      const status = document.getElementById("match-status");
+
+      let timer = null;
+
+      function updateCountdown() {
+        const remaining = target - Date.now();
+
+        if (remaining <= 0) {
+          countdown.innerHTML = "<p>Le coup d'envoi prévu est passé. Résultat à confirmer.</p>";
+          status.textContent = "EN ATTENTE DU RÉSULTAT";
+          if (timer !== null) {
+            clearInterval(timer);
+            timer = null;
+          }
+          return;
+        }
+
+        const values = [
+          Math.floor(remaining / 86400000),
+          Math.floor((remaining % 86400000) / 3600000),
+          Math.floor((remaining % 3600000) / 60000),
+          Math.floor((remaining % 60000) / 1000)
+        ];
+
+        countdown.querySelectorAll(".count-number").forEach((element, index) => {
+          element.textContent = String(values[index]).padStart(2, "0");
+        });
+      }
+
+      updateCountdown();
+      if (Date.now() < target) {
+        timer = setInterval(updateCountdown, 1000);
+      }
+    })();
+  </script>
+</body>
+</html>

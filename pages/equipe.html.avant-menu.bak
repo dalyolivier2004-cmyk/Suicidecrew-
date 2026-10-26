@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La Team — Suicide Crew</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark"><span>SC</span></span>
+      <span class="brand-copy">
+        <strong>SUICIDE</strong>
+        <em>CREW</em>
+        <small>HONOR OF KINGS</small>
+      </span>
+    </a>
+    <nav class="main-nav">
+      <a href="../index.html">Accueil</a>
+      <a class="active" href="equipe.html">La Team</a>
+      <a href="matchs.html">Matchs</a><a href="exploits.html">Exploits</a>
+      <a href="live.html">Live</a>
+      <a href="classement.html">Classement</a>
+      <a href="recrutement.html">Recrutement</a>
+      <a href="connexion.html">Connexion</a>
+    </nav>
+  </header>
+
+  <main class="subpage section-shell">
+    <p class="eyebrow">01 / identité</p>
+    <h1 class="page-title">Notre<br><em>équipe.</em></h1>
+    <p class="page-intro">
+      Six joueurs, une seule équipe. Découvrez les membres
+      de Suicide Crew sur Honor of Kings.
+    </p>
+
+    <div class="player-grid subpage-grid">
+
+      <article class="player-card">
+        <div class="player-portrait portrait-one">
+          <span>O</span>
+        </div>
+        <div class="player-info">
+          <span class="role">POLYVALENT</span>
+          <h3>Oli╰‿╯</h3>
+          <p>Prêt à s'adapter à l'équipe.</p>
+        </div>
+        <span class="card-index">01</span>
+      </article>
+
+      <article class="player-card">
+        <div class="player-portrait portrait-two">
+          <span>TZ</span>
+        </div>
+        <div class="player-info">
+          <span class="role">JUNGLE · ADC</span>
+          <h3>TZENITH╰‿╯</h3>
+          <p>Jungle et ligne de tireur.</p>
+        </div>
+        <span class="card-index">02</span>
+      </article>
+
+      <article class="player-card">
+        <div class="player-portrait portrait-three">
+          <span>OG</span>
+        </div>
+        <div class="player-info">
+          <span class="role">MID · SUPPORT</span>
+          <h3>Overgamer╰‿╯</h3>
+          <p>Milieu et soutien de l'équipe.</p>
+        </div>
+        <span class="card-index">03</span>
+      </article>
+
+      <article class="player-card">
+        <div class="player-portrait portrait-four">
+          <span>Y</span>
+        </div>
+        <div class="player-info">
+          <span class="role">SUPPORT · MID</span>
+          <h3>Yuna╰‿╯</h3>
+          <p>Soutien et ligne du milieu.</p>
+        </div>
+        <span class="card-index">04</span>
+      </article>
+
+      <article class="player-card">
+        <div class="player-portrait portrait-five">
+          <span>UM</span>
+        </div>
+        <div class="player-info">
+          <span class="role">TOP · JUNGLE · SUPPORT</span>
+          <h3>Urek Mazino╰‿╯</h3>
+          <p>Polyvalent sur trois rôles.</p>
+        </div>
+        <span class="card-index">05</span>
+      </article>
+
+      <article class="player-card">
+        <div class="player-portrait portrait-six">
+          <span>P9</span>
+        </div>
+        <div class="player-info">
+          <span class="role">TIREUR · ADC</span>
+          <h3>thepredator9╰‿╯</h3>
+          <p>Spécialiste du rôle de tireur.</p>
+        </div>
+        <span class="card-index">06</span>
+      </article>
+
+    </div>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/players.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

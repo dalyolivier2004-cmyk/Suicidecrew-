@@ -1,0 +1,28 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const players = window.SC_PLAYERS;
+
+  if (!Array.isArray(players)) {
+    console.error("La liste des joueurs est introuvable.");
+    return;
+  }
+
+  const grids = document.querySelectorAll("#equipe-grid, .subpage-grid");
+
+  grids.forEach((grid) => {
+    const isHome = grid.id === "equipe-grid";
+
+    grid.innerHTML = players.map((player, index) => `
+      <article class="player-card${isHome && index === 0 ? " featured" : ""}">
+        <div class="player-portrait ${player.portrait}">
+          <span>${player.initials}</span>
+        </div>
+        <div class="player-info">
+          <span class="role">${player.role}</span>
+          <h3>${player.name}</h3>
+          <p>${player.bio}</p>
+        </div>
+        <span class="card-index">${String(index + 1).padStart(2, "0")}</span>
+      </article>
+    `).join("");
+  });
+});

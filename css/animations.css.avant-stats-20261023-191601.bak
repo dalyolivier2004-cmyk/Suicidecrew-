@@ -1,0 +1,236 @@
+/* SUICIDE CREW — Animations premium légères */
+
+:root {
+  --sc-glow: rgba(255, 22, 45, 0.24);
+}
+
+/* Défilement et sélection */
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--red);
+  color: #fff;
+}
+
+/* Boutons */
+.btn,
+.header-cta,
+.play-btn {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease;
+}
+
+.btn-primary:hover,
+.header-cta:hover {
+  box-shadow: 0 0 24px var(--sc-glow);
+  transform: translateY(-2px);
+}
+
+.btn:active,
+.header-cta:active,
+.play-btn:active {
+  transform: scale(0.97);
+}
+
+/* Cartes */
+.player-card,
+.gallery-tile,
+.featured-match,
+.match-list,
+.rank-panel,
+.standalone-form,
+.profile-card {
+  transition:
+    border-color 240ms ease,
+    box-shadow 240ms ease,
+    transform 240ms ease;
+}
+
+.player-card:hover,
+.gallery-tile:hover {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.28);
+}
+
+.featured-match:hover,
+.match-list:hover,
+.rank-panel:hover,
+.standalone-form:hover,
+.profile-card:hover {
+  border-color: rgba(255, 22, 45, 0.38);
+}
+
+/* Lueur discrète sur le titre principal */
+.hero h1 strong {
+  animation: sc-title-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes sc-title-glow {
+  from {
+    text-shadow: -5px 6px 0 #580c15;
+  }
+  to {
+    text-shadow:
+      -5px 6px 0 #580c15,
+      0 0 22px rgba(255, 22, 45, 0.2);
+  }
+}
+
+/* Mouvement subtil de l'illustration */
+.moon {
+  animation: sc-moon-breathe 7s ease-in-out infinite alternate;
+}
+
+@keyframes sc-moon-breathe {
+  from {
+    box-shadow: 0 0 75px rgba(255, 22, 45, 0.25);
+  }
+  to {
+    box-shadow: 0 0 105px rgba(255, 22, 45, 0.4);
+  }
+}
+
+/* Accessibilité : respecter la préférence de réduction des mouvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Pas d'effets de survol forcés sur écran tactile */
+@media (hover: none) {
+  .player-card:hover,
+  .gallery-tile:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Suicide Crew — Apparitions au défilement */
+.sc-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.65s ease var(--sc-reveal-delay, 0ms),
+    transform 0.65s ease var(--sc-reveal-delay, 0ms);
+}
+
+.sc-reveal.sc-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+
+/* SUICIDE CREW — CLASSEMENT ESPORTS */
+.rank-panel {
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+}
+
+.rank-head {
+  background: rgba(255, 255, 255, 0.025);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.rank-row {
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.rank-row:hover {
+  background-color: rgba(255, 255, 255, 0.035);
+}
+
+.rank-row.leader {
+  background: linear-gradient(90deg, rgba(255, 22, 45, 0.16), rgba(255, 22, 45, 0.015));
+}
+
+.rank-row.leader > b {
+  text-shadow: 0 0 14px rgba(255, 22, 45, 0.3);
+}
+
+.rank-row .mini-logo {
+  flex-shrink: 0;
+}
+
+.stats-strip > div {
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.018);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.stats-strip > div:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 22, 45, 0.45);
+}
+
+.stats-strip small {
+  display: block;
+  line-height: 1.6;
+}
+
+.stats-strip b {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 480px) {
+  .rank-panel {
+    border-radius: 10px;
+  }
+
+  .rank-head,
+  .rank-row {
+    gap: 4px;
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .rank-row span {
+    gap: 6px;
+  }
+
+  .rank-row .mini-logo {
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
+  }
+
+  .stats-strip > div {
+    min-width: 0;
+    padding: 12px 9px;
+  }
+
+  .stats-strip small {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rank-row,
+  .stats-strip > div {
+    transition: none;
+  }
+
+  .stats-strip > div:hover {
+    transform: none;
+  }
+}
