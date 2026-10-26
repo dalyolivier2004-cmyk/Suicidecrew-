@@ -1,0 +1,13 @@
+.git/
+*.bak
+*.bak.*
+*.avant-*
+*-backup.*
+index-backup.html
+pages/*-backup.html
+sauvegarde-avant-correction/
+__pycache__/
+*.pyc
+.env
+*.sqlite3
+*.db

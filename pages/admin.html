@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Administration — Suicide Crew</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    .admin-wrap{width:min(900px,92%);margin:45px auto 70px}
+    .admin-intro{margin-bottom:28px}
+    .admin-label{color:#ff6675;font-size:11px;font-weight:800;letter-spacing:2px}
+    .admin-panel{padding:22px;border:1px solid rgba(255,255,255,.13);border-radius:14px;background:rgba(255,255,255,.035);margin:18px 0}
+    .admin-panel h2{margin-top:0}
+    .admin-warning{padding:13px;border-left:3px solid #ff6675;background:rgba(255,22,45,.09);font-size:13px;line-height:1.6}
+    .admin-form{display:grid;gap:15px}
+    .admin-form label{display:grid;gap:7px;font-size:13px}
+    .admin-form input,.admin-form select{width:100%;padding:12px;border:1px solid rgba(255,255,255,.2);border-radius:8px;background:#151922;color:#fff}
+    .admin-form button,.admin-back{display:inline-block;padding:12px 16px;border:0;border-radius:8px;background:#ff243f;color:white;font-weight:800;text-decoration:none;cursor:pointer}
+    .admin-back{background:rgba(255,255,255,.1)}
+    .admin-note{font-size:12px;opacity:.75;line-height:1.6}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark"><span>SC</span></span>
+      <span class="brand-copy">
+        <strong>SUICIDE</strong>
+        <em>CREW</em>
+        <small>HONOR OF KINGS</small>
+      </span>
+    </a>
+    <a class="admin-back" href="matchs.html">Retour aux matchs</a>
+  </header>
+
+  <main class="admin-wrap">
+    <div class="admin-intro">
+      <span class="admin-label">ESPACE DE GESTION</span>
+      <h1>Administration Suicide Crew</h1>
+      <p>Préparation de la gestion des matchs et des performances de l'équipe.</p>
+    </div>
+
+    <div class="admin-warning">
+      <strong>Version de préparation :</strong> cette page n'est pas encore protégée.
+      Ne saisis aucun mot de passe ni résultat confidentiel ici. La connexion sécurisée
+      et l'enregistrement réel seront ajoutés avec Django.
+    </div>
+
+    <section class="admin-panel">
+      <h2>Enregistrer un résultat</h2>
+      <form class="admin-form" id="match-form">
+        <label>
+          Adversaire
+          <input name="opponent" required maxlength="80" placeholder="Nom de l'équipe adverse">
+        </label>
+        <label>
+          Date du match
+          <input name="match_date" type="date" required>
+        </label>
+        <label>
+          Résultat
+          <select name="result" required>
+            <option value="">Choisir le résultat</option>
+            <option value="win">Victoire</option>
+            <option value="loss">Défaite</option>
+          </select>
+        </label>
+        <p class="admin-note">Le formulaire est uniquement visuel pour le moment : il n'enregistre rien.</p>
+        <button type="button" id="demo-button">Vérifier le formulaire</button>
+        <p id="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="admin-panel">
+      <h2>Prochaine évolution</h2>
+      <p>Après l'installation de Django, cette page pourra être reliée à une connexion administrateur, une base de données et aux statistiques des six joueurs.</p>
+      <a class="admin-back" href="equipe.html">Voir les joueurs</a>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("demo-button").addEventListener("click", function () {
+      const form = document.getElementById("match-form");
+      const message = document.getElementById("form-message");
+
+      if (!form.reportValidity()) return;
+
+      message.textContent = "Vérification réussie. Aucun résultat n'a été enregistré.";
+    });
+  </script>
+  <script src="../js/reveal.js"></script>
+</body>
+</html>

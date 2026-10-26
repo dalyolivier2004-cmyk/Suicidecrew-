@@ -1,0 +1,52 @@
+(() => {
+  const initReveal = () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+
+    const selectors = [
+      '.player-card',
+      '.rank-row',
+      '.stats-strip > div',
+      '.featured-match',
+      '.result-row',
+      '.live-card',
+      '.live-details',
+      '.profile-card',
+      '.standalone-form',
+      '.match-card',
+      '.match-list',
+      '.rank-panel',
+      '.page-form',
+      '.recruitment-card',
+      '.exploit-card'
+    ];
+
+    const elements = document.querySelectorAll(selectors.join(','));
+    const observer = new IntersectionObserver((entries, currentObserver) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('sc-revealed');
+        currentObserver.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -25px 0px'
+    });
+
+    elements.forEach((element, index) => {
+      if (element.closest('.modal')) return;
+      element.classList.add('sc-reveal');
+      element.style.setProperty(
+        '--sc-reveal-delay',
+        `${(index % 4) * 70}ms`
+      );
+      observer.observe(element);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initReveal, { once: true });
+  } else {
+    initReveal();
+  }
+})();
